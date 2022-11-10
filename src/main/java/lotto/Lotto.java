@@ -1,6 +1,9 @@
 package lotto;
 
 import lotto.utils.ExceptionMessages;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -10,8 +13,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
         validate();
+        Collections.sort(this.numbers);
     }
 
     private void validate() {
@@ -40,5 +44,15 @@ public class Lotto {
         if (isOutOfLottoNumberRange) {
             throw new IllegalArgumentException(ExceptionMessages.LOTTO_OUT_OF_RANGE);
         }
+    }
+
+    public boolean isSortedLottoNumbers(ArrayList<Integer> compareNumbers) {
+        Collections.sort(compareNumbers);
+        for (int index = 0; index < CORRECT_LOTTO_NUMBER_COUNT; index++) {
+            if (!compareNumbers.get(index).equals(this.numbers.get(index))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
