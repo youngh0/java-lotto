@@ -29,4 +29,29 @@ public class EntireLotto {
         }
         EntireLottoOutputView.showEntireLottoInfo(lottoInfo);
     }
+
+    public void ranking(WinningNumbers winningNumbers) {
+        for (Lotto lotto : entireLotto) {
+            int count = 0;
+            boolean isBonus = false;
+            for (int index = 0; index < 6; index++) {
+                int lottoNumber = lotto.getIndexLottoNumber(index);
+                if (winningNumbers.contains(lottoNumber)) {
+                    count += 1;
+                }
+                if (winningNumbers.hasBonusNumber(lottoNumber)) {
+                    isBonus = true;
+                }
+            }
+
+            for (Ranking value : Ranking.values()) {
+                if (value.getCorrectNumberCount() == count && value.isBonus() == isBonus) {
+                    value.plusRankingCount(value.name());
+                }
+            }
+        }
+        for (Ranking value : Ranking.values()) {
+            System.out.println(value + " " + value.getCount());
+        }
+    }
 }

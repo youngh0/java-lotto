@@ -56,6 +56,10 @@ public class Lotto {
         return true;
     }
 
+    public Integer getIndexLottoNumber(int index) {
+        return numbers.get(index);
+    }
+
     @Override
     public String toString() {
         return numbers.toString();

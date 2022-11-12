@@ -21,6 +21,14 @@ public class WinningNumbers {
         validateBonusNumberRange(this.bonusNumber);
     }
 
+    public boolean contains(int lottoNumber) {
+        return winningNumbers.contains(lottoNumber);
+    }
+
+    public boolean hasBonusNumber(int lottoNumber) {
+        return bonusNumber == lottoNumber;
+    }
+
     private List<String> validateWinningNumberSixElement(String winningNumbers) {
         List<String> separateNumbers = Arrays.asList(winningNumbers.split(","));
         if (separateNumbers.size() != Constant.CORRECT_LOTTO_SIZE) {
