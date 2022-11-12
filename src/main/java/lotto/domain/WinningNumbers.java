@@ -19,6 +19,7 @@ public class WinningNumbers {
 
         this.bonusNumber = validateBonusNumberHasCharacter(bonusNumber);
         validateBonusNumberRange(this.bonusNumber);
+        validateBonusNumberDuplicate(this.bonusNumber);
     }
 
     public boolean contains(int lottoNumber) {
@@ -72,5 +73,11 @@ public class WinningNumbers {
             throw new IllegalArgumentException(ExceptionMessages.BONUS_NUMBER_HAS_ONLY_NUMBER);
         }
         return Integer.parseInt(bonusNumber);
+    }
+
+    private void validateBonusNumberDuplicate(int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ExceptionMessages.BONUS_NUMBER_DUPLICATE);
+        }
     }
 }
