@@ -18,7 +18,7 @@ public class RankingCount {
 
     public void showRankingCount() {
         for (String rank : rankingCount.keySet()) {
-            System.out.println(rank + " " + rankingCount.get(rank));
+            System.out.println(Ranking.valueOf(rank).getPrintFormat() + " - " + rankingCount.get(rank) + "개");
         }
     }
 }
