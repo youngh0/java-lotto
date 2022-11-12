@@ -1,12 +1,13 @@
 package lotto;
 
+import lotto.domain.PaymentLottoMoney;
 import lotto.utils.ExceptionMessages;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("로또 구입 금액, 구입 개수 테스트")
 class PaymentLottoMoneyTest {

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import lotto.utils.LottoGenerator;
 import lotto.view.outputView.EntireLottoOutputView;

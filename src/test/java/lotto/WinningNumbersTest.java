@@ -1,17 +1,18 @@
 package lotto;
 
+import lotto.domain.WinningNumbers;
 import lotto.utils.ExceptionMessages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class WinningNumbersTest {
     @Nested
     @DisplayName("당첨번호 유효성 검사")
-    class WinningNumberTest{
+    class WinningNumberTest {
         @Test
         @DisplayName("당첨번호를 쉼표로 구분해 6개가 나오지 않으면 예외발생")
         void separateWinningNumberExceptionTest() {
@@ -47,7 +48,7 @@ class WinningNumbersTest {
 
     @Nested
     @DisplayName("보너스 번호 유효성 검사")
-    class BonusNumberTest{
+    class BonusNumberTest {
         @Test
         @DisplayName("보너스 번호에 문자가 입력되면 예외발생")
         void bonusNumberCharacterExceptionTest() {

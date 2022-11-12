@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.utils.ExceptionMessages;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoTest {
     @Nested
     @DisplayName("로또 번호 유효성 테스트")
-    class LottoValidation{
+    class LottoValidation {
         @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
         @Test
         void createLottoByOverSize() {
@@ -51,7 +52,7 @@ class LottoTest {
 
     @Nested
     @DisplayName("로또 정렬 테스트")
-    class LottoSorting{
+    class LottoSorting {
         @DisplayName("로또 번호 오름차순 정렬 테스트")
         @Test
         void sortLottoNumberTest() {

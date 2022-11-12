@@ -1,5 +1,9 @@
 package lotto;
 
+import lotto.domain.EntireLotto;
+import lotto.domain.PaymentLottoMoney;
+import lotto.domain.RankingCount;
+import lotto.domain.WinningNumbers;
 import lotto.view.inputView.BonusNumberInputView;
 import lotto.view.inputView.MoneyInputView;
 import lotto.view.inputView.WinningNumberInputView;
