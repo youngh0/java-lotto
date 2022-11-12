@@ -1,6 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.WinningNumbers;
 import lotto.utils.ExceptionMessages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -71,6 +70,14 @@ class WinningNumbersTest {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,4,5,6", "46"));
             assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.BONUS_NUMBER_OUT_OF_RANGE);
+        }
+
+        @Test
+        @DisplayName("보너스 번호가 45초과면 예외발생")
+        void bonusNumberDuplicateExceptionTest() {
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                    () -> new WinningNumbers("1,2,3,4,5,6", "6"));
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.BONUS_NUMBER_DUPLICATE);
         }
     }
 
