@@ -21,4 +21,18 @@ public class RankingCount {
             System.out.println(Ranking.valueOf(rank).getPrintFormat() + " - " + rankingCount.get(rank) + "개");
         }
     }
+
+    public double calculateYield(int paymentMoney) {
+        int totalPrice = calculateTotalPrice();
+        double per = totalPrice / (paymentMoney * 0.01);
+        return Math.round(per * 10) * 0.1;
+    }
+
+    private int calculateTotalPrice() {
+        int total = 0;
+        for (String rank : rankingCount.keySet()) {
+            total += Ranking.valueOf(rank).getPrice() * rankingCount.get(rank);
+        }
+        return total;
+    }
 }
