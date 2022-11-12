@@ -16,6 +16,8 @@ public class Application {
         String inputBonusNumber = BonusNumberInputView.inputBonusNumber();
 
         WinningNumbers winningNumbers = new WinningNumbers(inputWinningNumbers, inputBonusNumber);
-        entireLotto.ranking(winningNumbers);
+        RankingCount rankingCount = new RankingCount();
+        entireLotto.ranking(winningNumbers, rankingCount);
+        rankingCount.showRankingCount();
     }
 }

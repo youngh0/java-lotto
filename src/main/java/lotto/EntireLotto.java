@@ -30,7 +30,7 @@ public class EntireLotto {
         EntireLottoOutputView.showEntireLottoInfo(lottoInfo);
     }
 
-    public void ranking(WinningNumbers winningNumbers) {
+    public void ranking(WinningNumbers winningNumbers, RankingCount rankingCount) {
         for (Lotto lotto : entireLotto) {
             int count = 0;
             boolean isBonus = false;
@@ -46,12 +46,9 @@ public class EntireLotto {
 
             for (Ranking value : Ranking.values()) {
                 if (value.getCorrectNumberCount() == count && value.isBonus() == isBonus) {
-                    value.plusRankingCount(value.name());
+                    rankingCount.plusRankingCount(value.name());
                 }
             }
-        }
-        for (Ranking value : Ranking.values()) {
-            System.out.println(value + " " + value.getCount());
         }
     }
 }
