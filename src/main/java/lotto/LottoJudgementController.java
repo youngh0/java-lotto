@@ -5,6 +5,7 @@ import lotto.domain.RankingCount;
 import lotto.domain.WinningNumbers;
 import lotto.view.inputView.BonusNumberInputView;
 import lotto.view.inputView.WinningNumberInputView;
+import lotto.view.outputView.YieldOutputView;
 
 public class LottoJudgementController {
     private WinningNumbers winningNumbers;
@@ -27,7 +28,7 @@ public class LottoJudgementController {
 
     private double calculateYield(RankingCount rankingCount, int paymentMoney) {
         double yield = rankingCount.calculateYield(paymentMoney);
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+        YieldOutputView.showYield(yield);
         return yield;
     }
 }

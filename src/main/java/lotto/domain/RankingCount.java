@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.outputView.LottoRankingOutputView;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,9 +19,14 @@ public class RankingCount {
     }
 
     public void showRankingCount() {
+        StringBuffer rankingInfo = new StringBuffer();
         for (String rank : rankingCount.keySet()) {
-            System.out.println(Ranking.valueOf(rank).getPrintFormat() + " - " + rankingCount.get(rank) + "개");
+            rankingInfo.append(Ranking.valueOf(rank).getPrintFormat())
+                    .append(" - ")
+                    .append(rankingCount.get(rank))
+                    .append("개");
         }
+        LottoRankingOutputView.showLottoRankingInfo(rankingInfo);
     }
 
     public double calculateYield(int paymentMoney) {
