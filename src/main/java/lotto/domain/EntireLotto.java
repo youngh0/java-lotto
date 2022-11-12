@@ -30,24 +30,39 @@ public class EntireLotto {
         EntireLottoOutputView.showEntireLottoInfo(lottoInfo);
     }
 
-    public void ranking(WinningNumbers winningNumbers, RankingCount rankingCount) {
+    public void judgementEntireLottoWinning(WinningNumbers winningNumbers, RankingCount rankingCount) {
         for (Lotto lotto : entireLotto) {
-            int count = 0;
-            boolean isBonus = false;
-            for (int index = 0; index < 6; index++) {
-                int lottoNumber = lotto.getIndexLottoNumber(index);
-                if (winningNumbers.contains(lottoNumber)) {
-                    count += 1;
-                }
-                if (winningNumbers.hasBonusNumber(lottoNumber)) {
-                    isBonus = true;
-                }
-            }
+            int correctLottoNumberCount = calculateContainsWinningNumbers(lotto, winningNumbers);
+            boolean isBonus = calculateHasBonusNumber(lotto, winningNumbers);
+            applyLottoRank(correctLottoNumberCount, isBonus, rankingCount);
+        }
+    }
 
-            for (Ranking value : Ranking.values()) {
-                if (value.getCorrectNumberCount() == count && value.isBonus() == isBonus) {
-                    rankingCount.plusRankingCount(value.name());
-                }
+    private int calculateContainsWinningNumbers(Lotto lotto, WinningNumbers winningNumbers) {
+        int count = 0;
+        for (int index = 0; index < 6; index++) {
+            int lottoNumber = lotto.getIndexLottoNumber(index);
+            if (winningNumbers.contains(lottoNumber)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private boolean calculateHasBonusNumber(Lotto lotto, WinningNumbers winningNumbers) {
+        for (int index = 0; index < 6; index++) {
+            int lottoNumber = lotto.getIndexLottoNumber(index);
+            if (winningNumbers.hasBonusNumber(lottoNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void applyLottoRank(int correctLottoNumberCount, boolean isBonus, RankingCount rankingCount) {
+        for (Ranking value : Ranking.values()) {
+            if (value.getCorrectNumberCount() == correctLottoNumberCount && value.isBonus() == isBonus) {
+                rankingCount.plusRankingCount(value.name());
             }
         }
     }

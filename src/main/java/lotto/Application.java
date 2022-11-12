@@ -21,7 +21,7 @@ public class Application {
 
         WinningNumbers winningNumbers = new WinningNumbers(inputWinningNumbers, inputBonusNumber);
         RankingCount rankingCount = new RankingCount();
-        entireLotto.ranking(winningNumbers, rankingCount);
+        entireLotto.judgementEntireLottoWinning(winningNumbers, rankingCount);
         rankingCount.showRankingCount();
         double yield = rankingCount.calculateYield(Integer.parseInt(paymentMoney));
         System.out.println("총 수익률은 " + yield + "%입니다.");
