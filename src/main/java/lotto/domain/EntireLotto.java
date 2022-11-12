@@ -38,6 +38,10 @@ public class EntireLotto {
         }
     }
 
+    public int getLottoCount() {
+        return entireLotto.size();
+    }
+
     private int calculateContainsWinningNumbers(Lotto lotto, WinningNumbers winningNumbers) {
         int count = 0;
         for (int index = 0; index < 6; index++) {

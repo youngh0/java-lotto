@@ -13,8 +13,8 @@ public class Application {
         EntireLotto entireLotto = buyLottoController.BuyLotto(new PaymentLottoMoney(paymentMoney), new EntireLotto());
         entireLotto.showEntireLottoInfo();
 
-        LottoJudgementController lottoJudgementController = new LottoJudgementController(Integer.parseInt(paymentMoney));
-        lottoJudgementController.calculateEntireLottoRanking(entireLotto, new RankingCount());
+        LottoJudgementController lottoJudgementController = new LottoJudgementController();
+        lottoJudgementController.calculateTotalResult(entireLotto, new RankingCount());
 
     }
 }
