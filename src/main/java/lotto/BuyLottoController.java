@@ -2,10 +2,16 @@ package lotto;
 
 import lotto.domain.EntireLotto;
 import lotto.domain.PaymentLottoMoney;
+import lotto.view.inputView.MoneyInputView;
 
 public class BuyLottoController {
-    public EntireLotto BuyLotto(PaymentLottoMoney paymentLottoMoney, EntireLotto entireLotto) {
-        int lottoCount = paymentLottoMoney.calculateNumberOfLotto();
+
+    public int calculatePossibleBuyLottoNumber() {
+        String paymentMoney = MoneyInputView.inputMoney();
+        return new PaymentLottoMoney(paymentMoney).calculateNumberOfLotto();
+    }
+
+    public EntireLotto BuyLotto(int lottoCount, EntireLotto entireLotto) {
         entireLotto.generateEntireLotto(lottoCount);
         return entireLotto;
     }
