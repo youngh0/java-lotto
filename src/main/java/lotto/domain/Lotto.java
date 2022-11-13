@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.utils.ExceptionMessages;
+import lotto.utils.LottoNumberRange;
 
 import java.util.ArrayList;
 import java.util.Collections;

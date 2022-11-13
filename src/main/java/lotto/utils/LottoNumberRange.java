@@ -1,6 +1,4 @@
-package lotto.domain;
-
-import lotto.utils.ExceptionMessages;
+package lotto.utils;
 
 public enum LottoNumberRange {
     MIN(1),

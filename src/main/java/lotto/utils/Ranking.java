@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.utils;
 
 public enum Ranking {
     _5TH(3, false, 5_000, "3개 일치 (5,000원)"),

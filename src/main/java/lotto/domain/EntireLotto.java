@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.utils.LottoGenerator;
+import lotto.utils.Ranking;
 import lotto.view.outputView.EntireLottoOutputView;
 
 import java.util.ArrayList;

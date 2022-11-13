@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.utils.Ranking;
 import lotto.view.outputView.LottoRankingOutputView;
 
 import java.math.BigDecimal;
