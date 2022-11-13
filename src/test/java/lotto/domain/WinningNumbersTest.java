@@ -33,7 +33,7 @@ class WinningNumbersTest {
         void winningNumberMinRangeExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,0,5,6", "3"));
-            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.WINNING_NUMBER_OUT_OF_RANGE);
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.LOTTO_OUT_OF_RANGE);
         }
 
         @Test
@@ -41,7 +41,7 @@ class WinningNumbersTest {
         void winningNumberMaxRangeExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,50,3,4,5,6", "3"));
-            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.WINNING_NUMBER_OUT_OF_RANGE);
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.LOTTO_OUT_OF_RANGE);
         }
     }
 
@@ -61,7 +61,7 @@ class WinningNumbersTest {
         void bonusNumberMinRangeExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,4,5,6", "0"));
-            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.BONUS_NUMBER_OUT_OF_RANGE);
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.LOTTO_OUT_OF_RANGE);
         }
 
         @Test
@@ -69,7 +69,7 @@ class WinningNumbersTest {
         void bonusNumberMaxRangeExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,4,5,6", "46"));
-            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.BONUS_NUMBER_OUT_OF_RANGE);
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.LOTTO_OUT_OF_RANGE);
         }
 
         @Test

@@ -54,18 +54,11 @@ public class WinningNumbers {
     }
 
     private void validateNumberRange(List<Integer> winningNumbers) {
-        boolean outOfRangeCount = winningNumbers.stream()
-                .anyMatch(number -> number < Constant.LOTTO_NUMBER_MIN_VALUE || number > Constant.LOTTO_NUMBER_MAX_VALUE);
-        if (outOfRangeCount) {
-            throw new IllegalArgumentException(ExceptionMessages.WINNING_NUMBER_OUT_OF_RANGE);
-        }
+        winningNumbers.forEach(LottoNumberRange::validateLottoNumberRage);
     }
 
     private void validateBonusNumberRange(int bonusNumber) {
-        if (bonusNumber >= Constant.LOTTO_NUMBER_MIN_VALUE && bonusNumber <= Constant.LOTTO_NUMBER_MAX_VALUE) {
-            return;
-        }
-        throw new IllegalArgumentException(ExceptionMessages.BONUS_NUMBER_OUT_OF_RANGE);
+        LottoNumberRange.validateLottoNumberRage(bonusNumber);
     }
 
     private int validateBonusNumberHasCharacter(String bonusNumber) {

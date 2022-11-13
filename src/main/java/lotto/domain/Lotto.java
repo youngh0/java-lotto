@@ -8,8 +8,6 @@ import java.util.List;
 
 public class Lotto {
     private final int CORRECT_LOTTO_NUMBER_COUNT = 6;
-    private final int LOTTO_MIN_NUMBER = 1;
-    private final int LOTTO_MAX_NUMBER = 45;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -39,11 +37,7 @@ public class Lotto {
     }
 
     private void isSatisfiedLottoNumberRange() {
-        boolean isOutOfLottoNumberRange = numbers.stream()
-                .anyMatch(lottoNumber -> lottoNumber < LOTTO_MIN_NUMBER || lottoNumber > LOTTO_MAX_NUMBER);
-        if (isOutOfLottoNumberRange) {
-            throw new IllegalArgumentException(ExceptionMessages.LOTTO_OUT_OF_RANGE);
-        }
+        numbers.forEach(LottoNumberRange::validateLottoNumberRage);
     }
 
     public boolean isSortedLottoNumbers(ArrayList<Integer> compareNumbers) {

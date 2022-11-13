@@ -8,8 +8,6 @@ public class ExceptionMessages {
     public static String LOTTO_OUT_OF_RANGE = "[ERROR] 로또 숫자는 1~45까지만 가능합니다.";
     public static String WINNING_NUMBER_HAS_SIX_ELEMENT = "[ERROR] 당첨번호는 쉽표로 구분된 6개의 숫자입니다.";
     public static String WINNING_NUMBER_HAS_ONLY_NUMBER = "[ERROR] 당첨번호는 쉽표로 구분된 숫자만 가능합니다.";
-    public static String WINNING_NUMBER_OUT_OF_RANGE = "[ERROR] 당첨번호는 1~45사이의 숫자만 가능합니다.";
     public static String BONUS_NUMBER_HAS_ONLY_NUMBER = "[ERROR] 보너스 번호는 숫자만 가능합니다.";
-    public static String BONUS_NUMBER_OUT_OF_RANGE = "[ERROR] 보너스 번호는 1~45사이의 숫자만 가능합니다.";
     public static String BONUS_NUMBER_DUPLICATE = "[ERROR] 보너스 번호는 당첨번호와 중복되지 않는 숫자만 가능합니다.";
 }
