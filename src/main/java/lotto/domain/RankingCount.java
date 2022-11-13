@@ -33,16 +33,19 @@ public class RankingCount {
     }
 
     public double calculateYield(int paymentMoney) {
-        int totalPrice = calculateTotalPrice();
-        double yield = totalPrice / (paymentMoney * 0.01);
-        return new BigDecimal(yield).setScale(1, RoundingMode.HALF_UP).doubleValue();
+        BigDecimal totalYield = new BigDecimal(0);
+        for (String rank : rankingCount.keySet()) {
+            totalYield = totalYield.add(calculateEachRankYield(paymentMoney, rank));
+        }
+        return totalYield.setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 
-    private int calculateTotalPrice() {
-        int total = 0;
-        for (String rank : rankingCount.keySet()) {
-            total += Ranking.valueOf(rank).getPrice() * rankingCount.get(rank);
+    private BigDecimal calculateEachRankYield(int paymentMoney, String rank) {
+        BigDecimal yield = new BigDecimal(0);
+        for (int count = 0; count < rankingCount.get(rank); count++) {
+            double eachYield = Ranking.valueOf(rank).getPrice() / (paymentMoney * 0.01);
+            yield = yield.add(new BigDecimal(eachYield));
         }
-        return total;
+        return yield;
     }
 }
