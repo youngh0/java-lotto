@@ -9,18 +9,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumbers {
-    private final String IS_DIGIT_REGEX = "^[0-9]*$";
-    private final String BONUS_NUMBER_REGEX = "^[0-9]{1,2}";
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private final String LOTTO_NUMBER_REGEX = "^[0-9]{1,2}";
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
     public WinningNumbers(String winningNumbers, String bonusNumber) {
-        this.winningNumbers = validateWinningNumberOnlyNumber(validateWinningNumberSixElement(winningNumbers));
-        validateNumberRange(this.winningNumbers);
-
-        this.bonusNumber = validateBonusNumberHasCharacter(bonusNumber);
-        validateBonusNumberRange(this.bonusNumber);
-        validateBonusNumberDuplicate(this.bonusNumber);
+        this.winningNumbers = validateWinningNumbers(winningNumbers);
+        this.bonusNumber = validateBonusNumber(bonusNumber);
     }
 
     public boolean contains(int lottoNumber) {
@@ -31,21 +26,29 @@ public class WinningNumbers {
         return bonusNumber == lottoNumber;
     }
 
-    private List<String> validateWinningNumberSixElement(String winningNumbers) {
-        List<String> separateNumbers = Arrays.asList(winningNumbers.split(","));
-        if (separateNumbers.size() != Constant.CORRECT_LOTTO_SIZE) {
-            throw new IllegalArgumentException(ExceptionMessages.WINNING_NUMBER_HAS_SIX_ELEMENT);
-        }
-        return separateNumbers;
+    private List<Integer> validateWinningNumbers(String winningNumbers) {
+        List<String> winning = convertStringToListByRest(winningNumbers);
+        validateWinningNumberSixElement(winning);
+        winning.forEach(this::validateLottoNumberHasCharacter);
+        List<Integer> winningLottoNumbers = convertWinningNumbersToInteger(winning);
+        winningLottoNumbers.forEach(LottoNumberRange::validateLottoNumberRage);
+        return winningLottoNumbers;
     }
 
-    private List<Integer> validateWinningNumberOnlyNumber(List<String> winningNumbers) {
-        boolean havingNotNumber = winningNumbers.stream()
-                .anyMatch(number -> !number.matches(IS_DIGIT_REGEX));
-        if (havingNotNumber) {
-            throw new IllegalArgumentException(ExceptionMessages.WINNING_NUMBER_HAS_ONLY_NUMBER);
+    private List<String> convertStringToListByRest(String winningNumbers) {
+        return Arrays.asList(winningNumbers.split(","));
+    }
+
+    private void validateWinningNumberSixElement(List<String> winningNumbers) {
+        if (winningNumbers.size() != Constant.CORRECT_LOTTO_SIZE) {
+            throw new IllegalArgumentException(ExceptionMessages.WINNING_NUMBER_HAS_SIX_ELEMENT);
         }
-        return convertWinningNumbersToInteger(winningNumbers);
+    }
+
+    private void validateLottoNumberHasCharacter(String lottoNumber) {
+        if (!lottoNumber.matches(LOTTO_NUMBER_REGEX)) {
+            throw new IllegalArgumentException(ExceptionMessages.LOTTO_ONLY_NUMBERS);
+        }
     }
 
     private List<Integer> convertWinningNumbersToInteger(List<String> winningNumbers) {
@@ -54,18 +57,10 @@ public class WinningNumbers {
                 .collect(Collectors.toList());
     }
 
-    private void validateNumberRange(List<Integer> winningNumbers) {
-        winningNumbers.forEach(LottoNumberRange::validateLottoNumberRage);
-    }
-
-    private void validateBonusNumberRange(int bonusNumber) {
-        LottoNumberRange.validateLottoNumberRage(bonusNumber);
-    }
-
-    private int validateBonusNumberHasCharacter(String bonusNumber) {
-        if (!bonusNumber.matches(BONUS_NUMBER_REGEX)) {
-            throw new IllegalArgumentException(ExceptionMessages.BONUS_NUMBER_HAS_ONLY_NUMBER);
-        }
+    private int validateBonusNumber(String bonusNumber) {
+        validateLottoNumberHasCharacter(bonusNumber);
+        LottoNumberRange.validateLottoNumberRage(Integer.parseInt(bonusNumber));
+        validateBonusNumberDuplicate(Integer.parseInt(bonusNumber));
         return Integer.parseInt(bonusNumber);
     }
 

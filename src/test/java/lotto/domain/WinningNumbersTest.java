@@ -25,7 +25,7 @@ class WinningNumbersTest {
         void winningNumberOnlyNumberExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,4,5, 6", "3"));
-            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.WINNING_NUMBER_HAS_ONLY_NUMBER);
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.LOTTO_ONLY_NUMBERS);
         }
 
         @Test
@@ -53,7 +53,7 @@ class WinningNumbersTest {
         void bonusNumberCharacterExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,4,5,6", ""));
-            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.BONUS_NUMBER_HAS_ONLY_NUMBER);
+            assertThat(exception.getMessage()).isEqualTo(ExceptionMessages.LOTTO_ONLY_NUMBERS);
         }
 
         @Test
