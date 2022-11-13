@@ -18,7 +18,8 @@ public class LottoJudgementController {
 
     public void calculateTotalResult(EntireLotto entireLotto, RankingCount rankingCount) {
         calculateEntireLottoRanking(entireLotto, rankingCount);
-        calculateYield(rankingCount, entireLotto.getLottoCount() * 1000);
+        double yield = calculateYield(rankingCount, entireLotto.getLottoCount() * 1000);
+        YieldOutputView.showYield(yield);
     }
 
     private void calculateEntireLottoRanking(EntireLotto entireLotto, RankingCount rankingCount) {
@@ -27,8 +28,6 @@ public class LottoJudgementController {
     }
 
     private double calculateYield(RankingCount rankingCount, int paymentMoney) {
-        double yield = rankingCount.calculateYield(paymentMoney);
-        YieldOutputView.showYield(yield);
-        return yield;
+        return rankingCount.calculateYield(paymentMoney);
     }
 }
