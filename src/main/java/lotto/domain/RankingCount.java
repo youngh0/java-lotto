@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.view.outputView.LottoRankingOutputView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -24,15 +26,16 @@ public class RankingCount {
             rankingInfo.append(Ranking.valueOf(rank).getPrintFormat())
                     .append(" - ")
                     .append(rankingCount.get(rank))
-                    .append("개");
+                    .append("개")
+                    .append("\n");
         }
         LottoRankingOutputView.showLottoRankingInfo(rankingInfo);
     }
 
     public double calculateYield(int paymentMoney) {
         int totalPrice = calculateTotalPrice();
-        double per = totalPrice / (paymentMoney * 0.01);
-        return Math.round(per * 10) * 0.1;
+        double yield = totalPrice / (paymentMoney * 0.01);
+        return new BigDecimal(yield).setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 
     private int calculateTotalPrice() {

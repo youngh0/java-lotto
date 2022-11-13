@@ -34,4 +34,12 @@ class RankingCountTest {
         double yield = rankingCount.calculateYield(6000);
         Assertions.assertThat(yield).isEqualTo(916.7);
     }
+
+    @Test
+    @DisplayName("수익률이 매우 큰 경우")
+    void calculateBigYieldTest() {
+        rankingCount.plusRankingCount(Ranking._1ST.name());
+        double yield = rankingCount.calculateYield(7000);
+        Assertions.assertThat(yield).isEqualTo(28572214.3);
+    }
 }
