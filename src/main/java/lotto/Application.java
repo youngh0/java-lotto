@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.controller.BuyLottoController;
+import lotto.controller.LottoJudgementController;
 import lotto.domain.EntireLotto;
 import lotto.domain.RankingCount;
 
