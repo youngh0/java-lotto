@@ -42,4 +42,13 @@ class RankingCountTest {
         double yield = rankingCount.calculateYield(7000);
         Assertions.assertThat(yield).isEqualTo(28572214.3);
     }
+
+    @Test
+    @DisplayName("총 상금 40억에 대한 수익률 테스트")
+    void overflowTest() {
+        rankingCount.plusRankingCount(Ranking._1ST.name());
+        rankingCount.plusRankingCount(Ranking._1ST.name());
+        double yield = rankingCount.calculateYield(7000);
+        Assertions.assertThat(yield).isEqualTo(57143642.9);
+    }
 }
