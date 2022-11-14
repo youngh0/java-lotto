@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class WinningNumbers {
     private final String LOTTO_NUMBER_REGEX = "^[0-9]{1,2}";
-    private final List<Integer> winningNumbers;
-    private final int bonusNumber;
+    private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public WinningNumbers(String winningNumbers, String bonusNumber) {
         this.winningNumbers = validateWinningNumbers(winningNumbers);
