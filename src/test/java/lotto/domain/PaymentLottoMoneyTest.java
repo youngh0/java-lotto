@@ -1,6 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.PaymentLottoMoney;
 import lotto.utils.ExceptionMessages;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
