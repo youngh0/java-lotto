@@ -11,7 +11,7 @@ public class Application {
         try {
             BuyLottoController buyLottoController = new BuyLottoController();
             int lottoCount = buyLottoController.calculatePossibleBuyLottoNumber();
-            EntireLotto entireLotto = buyLottoController.BuyLotto(lottoCount, new EntireLotto());
+            EntireLotto entireLotto = buyLottoController.buyLotto(lottoCount, new EntireLotto());
             entireLotto.showEntireLottoInfo();
 
             LottoJudgementController lottoJudgementController = new LottoJudgementController();

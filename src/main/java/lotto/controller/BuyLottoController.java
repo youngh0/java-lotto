@@ -11,7 +11,7 @@ public class BuyLottoController {
         return new PaymentLottoMoney(paymentMoney).calculateNumberOfLotto();
     }
 
-    public EntireLotto BuyLotto(int lottoCount, EntireLotto entireLotto) {
+    public EntireLotto buyLotto(int lottoCount, EntireLotto entireLotto) {
         entireLotto.generateEntireLotto(lottoCount);
         return entireLotto;
     }
