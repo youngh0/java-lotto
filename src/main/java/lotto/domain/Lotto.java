@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.utils.Constant;
 import lotto.utils.ExceptionMessages;
 import lotto.utils.LottoNumberRange;
 
@@ -8,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
-    private final int CORRECT_LOTTO_NUMBER_COUNT = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -24,7 +24,7 @@ public class Lotto {
     }
 
     private void isCorrectLottoNumberCount() {
-        if (numbers.size() != CORRECT_LOTTO_NUMBER_COUNT) {
+        if (numbers.size() != Constant.CORRECT_LOTTO_SIZE) {
             throw new IllegalArgumentException(ExceptionMessages.LOTTO_ONLY_SIX_SIZE);
         }
     }
@@ -32,7 +32,7 @@ public class Lotto {
     private void isUniqueLottoNumbers() {
         if (numbers.stream()
                 .distinct()
-                .count() != CORRECT_LOTTO_NUMBER_COUNT) {
+                .count() != Constant.CORRECT_LOTTO_SIZE) {
             throw new IllegalArgumentException(ExceptionMessages.LOTTO_ONLY_UNIQUE_NUMBERS);
         }
     }
@@ -43,7 +43,7 @@ public class Lotto {
 
     public boolean isSortedLottoNumbers(ArrayList<Integer> compareNumbers) {
         Collections.sort(compareNumbers);
-        for (int index = 0; index < CORRECT_LOTTO_NUMBER_COUNT; index++) {
+        for (int index = 0; index < Constant.CORRECT_LOTTO_SIZE; index++) {
             if (!compareNumbers.get(index).equals(this.numbers.get(index))) {
                 return false;
             }
