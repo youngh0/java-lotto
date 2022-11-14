@@ -71,6 +71,7 @@
 - [x]  view 분리
     - [x]  로또 당첨 결과 output분리
     - [x]  수익률 output분리
-- [ ]  enum 적용
+- [x]  enum 적용
 - [x]  당첨 총 금액 구할 때 overflow방지 필요
 - [x]  수익률이 클 경우 xxxE7형식으로 나오는거 수정
+- [x]  Lotto클래스에 있는 상수 필드 변수 제거
