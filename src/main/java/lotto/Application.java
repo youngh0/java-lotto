@@ -10,9 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
         try {
             BuyLottoController buyLottoController = new BuyLottoController();
-            int lottoCount = buyLottoController.calculatePossibleBuyLottoNumber();
-            EntireLotto entireLotto = buyLottoController.buyLotto(lottoCount, new EntireLotto());
-            entireLotto.showEntireLottoInfo();
+            EntireLotto entireLotto = buyLottoController.buyLotto();
 
             LottoJudgementController lottoJudgementController = new LottoJudgementController();
             lottoJudgementController.calculateTotalResult(entireLotto, new RankingCount());
