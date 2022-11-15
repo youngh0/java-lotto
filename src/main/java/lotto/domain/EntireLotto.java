@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.utils.Constant;
 import lotto.utils.LottoGenerator;
 import lotto.utils.Ranking;
 import lotto.view.outputView.EntireLottoOutputView;
@@ -45,7 +46,7 @@ public class EntireLotto {
 
     private int calculateContainsWinningNumbers(Lotto lotto, WinningNumbers winningNumbers) {
         int count = 0;
-        for (int index = 0; index < 6; index++) {
+        for (int index = 0; index < Constant.CORRECT_LOTTO_SIZE; index++) {
             int lottoNumber = lotto.getIndexLottoNumber(index);
             if (winningNumbers.contains(lottoNumber)) {
                 count += 1;
@@ -55,7 +56,7 @@ public class EntireLotto {
     }
 
     private boolean calculateHasBonusNumber(Lotto lotto, WinningNumbers winningNumbers) {
-        for (int index = 0; index < 6; index++) {
+        for (int index = 0; index < Constant.CORRECT_LOTTO_SIZE; index++) {
             int lottoNumber = lotto.getIndexLottoNumber(index);
             if (winningNumbers.hasBonusNumber(lottoNumber)) {
                 return true;

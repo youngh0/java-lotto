@@ -1,10 +1,10 @@
 package lotto.domain;
 
+import lotto.utils.Constant;
 import lotto.utils.ExceptionMessages;
 
 public class PaymentLottoMoney {
     private final String PAYMENT_NUMBER_REGEX = "^[0-9]*$";
-    private final int LOTTO_PRICE = 1000;
     private int paymentMoney;
 
     public PaymentLottoMoney(String paymentMoney) {
@@ -24,12 +24,12 @@ public class PaymentLottoMoney {
     }
 
     private void isPaymentOneThousandUnit(int paymentMoney) {
-        if (paymentMoney % LOTTO_PRICE != 0) {
+        if (paymentMoney % Constant.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ExceptionMessages.PAYMENT_ONLY_ONE_THOUSAND_UNIT);
         }
     }
 
     public int calculateNumberOfLotto() {
-        return paymentMoney / LOTTO_PRICE;
+        return paymentMoney / Constant.LOTTO_PRICE;
     }
 }
