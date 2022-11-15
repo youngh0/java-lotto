@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@DisplayName("당첨 번호, 보너스 번호 입력 유효성 검사")
 class WinningNumbersTest {
     @Nested
     @DisplayName("당첨번호 유효성 검사")
@@ -73,7 +74,7 @@ class WinningNumbersTest {
         }
 
         @Test
-        @DisplayName("보너스 번호가 45초과면 예외발생")
+        @DisplayName("보너스 번호가 당첨번호와 중복되면 예외발생")
         void bonusNumberDuplicateExceptionTest() {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> new WinningNumbers("1,2,3,4,5,6", "6"));

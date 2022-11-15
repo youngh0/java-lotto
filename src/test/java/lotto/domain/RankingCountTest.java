@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("수익률 계산 테스트")
 class RankingCountTest {
     RankingCount rankingCount = new RankingCount();
 
