@@ -23,6 +23,10 @@ public class RankingCount {
 
     public void showRankingCount() {
         StringBuffer rankingInfo = new StringBuffer();
+        rankingInfo.append("당첨통계")
+                .append("\n")
+                .append("---")
+                .append("\n");
         for (String rank : rankingCount.keySet()) {
             rankingInfo.append(Ranking.valueOf(rank).getPrintFormat())
                     .append(" - ")
