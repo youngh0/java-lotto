@@ -15,6 +15,12 @@ public class EntireLotto {
         }
     }
 
+    public void calculateTotalRanking(WinningNumbers winningNumbers, LottoResult lottoResult) {
+        for (Lotto lotto : entireLotto) {
+            lottoResult.applyLottoRanking(winningNumbers.calculateRanking(lotto));
+        }
+    }
+
     public int getSize() {
         return entireLotto.size();
     }
