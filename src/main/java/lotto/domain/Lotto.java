@@ -15,6 +15,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int countCorrectLottoNumber(Lotto playerLotto) {
+        int correctNumber = 0;
+        for (Integer number : playerLotto.numbers) {
+            if (this.numbers.contains(number)) {
+                correctNumber++;
+            }
+        }
+        return correctNumber;
+    }
+
+    public boolean isMatchBonusNumber(int playerBonusNumber) {
+        return this.numbers.contains(playerBonusNumber);
+    }
+
     private void validate(List<Integer> numbers) {
         validateLottoDuplicate(numbers);
     }

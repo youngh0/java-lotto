@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.utils.Ranking;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,12 @@ public class WinningNumbers {
         this.winningNumbers = new Lotto(convertWinningNumber(winningNumbers));
         validate(bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    public Ranking calculateRanking(Lotto lotto) {
+        int correctLottoNumber = winningNumbers.countCorrectLottoNumber(lotto);
+        boolean matchBonusNumber = winningNumbers.isMatchBonusNumber(bonusNumber);
+        return Ranking.findRanking(correctLottoNumber, matchBonusNumber);
     }
 
     private List<Integer> convertWinningNumber(String winningNumber) {
