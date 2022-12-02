@@ -1,20 +1,38 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final int MIN_LOTTO_NUMBER = 1;
+    private final int MAX_LOTTO_NUMBER = 45;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
+        validateLottoNumberRange(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        validateLottoDuplicate(numbers);
+    }
+
+    private void validateLottoDuplicate(List<Integer> numbers) {
+        long uniqueNumberCount = numbers.stream()
+                .distinct()
+                .count();
+        if (uniqueNumberCount != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateLottoNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
