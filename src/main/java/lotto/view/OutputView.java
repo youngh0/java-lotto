@@ -13,8 +13,10 @@ public class OutputView {
     public void showRankingResult(LottoResult lottoResult) {
         StringBuffer rankingResult = new StringBuffer();
         for (Ranking value : Ranking.values()) {
+            if (value == Ranking.EMPTY) {
+                continue;
+            }
             rankingResult.append(value.getMessage(lottoResult.getWinningRankingCount(value))).append("\n");
-//            System.out.println(value.toString());
         }
         System.out.println(rankingResult);
     }
