@@ -8,6 +8,8 @@ import lotto.utils.LottoGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.math.BigDecimal;
+
 public class LottoController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
@@ -17,12 +19,11 @@ public class LottoController {
                 new PurchaseAmountDTO(inputView.inputMoney()).getMoney() / 1000,
                 new LottoGenerator());
         outputView.showEntireLottoInfo(entireLotto);
-        System.out.println(entireLotto.getSize());
         WinningNumbers winningNumbers = new WinningNumbers(
                 inputView.inputWinningNumber(),
                 Integer.parseInt(inputView.inputBonusNumber()));
         LottoResult lottoResult = entireLotto.calculateTotalRanking(winningNumbers, new LottoResult());
-        outputView.showRankingResult(lottoResult);
-
+        BigDecimal bigDecimal = lottoResult.calculateYield(entireLotto.getSize() * 1000);
+        outputView.showRankingResult(lottoResult, bigDecimal);
     }
 }
