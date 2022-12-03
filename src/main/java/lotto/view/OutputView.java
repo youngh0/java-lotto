@@ -27,4 +27,8 @@ public class OutputView {
         rankingResult.append("총 수익률은 ").append(yieldFormat.format(finalYield)).append("%입니다.").append("\n");
         System.out.println(rankingResult);
     }
+
+    public void showErrorMessage() {
+        System.out.println("[ERROR] ~~");
+    }
 }

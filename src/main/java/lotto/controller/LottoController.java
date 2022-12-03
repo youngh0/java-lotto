@@ -15,15 +15,19 @@ public class LottoController {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        EntireLotto entireLotto = new EntireLotto(
-                new PurchaseAmountDTO(inputView.inputMoney()).getMoney() / 1000,
-                new LottoGenerator());
-        outputView.showEntireLottoInfo(entireLotto);
-        WinningNumbers winningNumbers = new WinningNumbers(
-                inputView.inputWinningNumber(),
-                Integer.parseInt(inputView.inputBonusNumber()));
-        LottoResult lottoResult = entireLotto.calculateTotalRanking(winningNumbers, new LottoResult());
-        BigDecimal bigDecimal = lottoResult.calculateYield(entireLotto.getSize() * 1000);
-        outputView.showRankingResult(lottoResult, bigDecimal);
+        try {
+            EntireLotto entireLotto = new EntireLotto(
+                    new PurchaseAmountDTO(inputView.inputMoney()).getMoney() / 1000,
+                    new LottoGenerator());
+            outputView.showEntireLottoInfo(entireLotto);
+            WinningNumbers winningNumbers = new WinningNumbers(
+                    inputView.inputWinningNumber(),
+                    Integer.parseInt(inputView.inputBonusNumber()));
+            LottoResult lottoResult = entireLotto.calculateTotalRanking(winningNumbers, new LottoResult());
+            BigDecimal bigDecimal = lottoResult.calculateYield(entireLotto.getSize() * 1000);
+            outputView.showRankingResult(lottoResult, bigDecimal);
+        } catch (IllegalArgumentException exception) {
+            outputView.showErrorMessage();
+        }
     }
 }
