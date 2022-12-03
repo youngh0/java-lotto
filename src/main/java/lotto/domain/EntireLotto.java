@@ -4,6 +4,7 @@ import lotto.utils.LottoGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class EntireLotto {
     private final List<Lotto> entireLotto;
@@ -19,6 +20,14 @@ public class EntireLotto {
         for (Lotto lotto : entireLotto) {
             lottoResult.applyLottoRanking(winningNumbers.calculateRanking(lotto));
         }
+    }
+
+    public StringJoiner getEntireLottoInfo() {
+        StringJoiner entireLottoInfo = new StringJoiner("\n");
+        for (Lotto lotto : entireLotto) {
+            entireLottoInfo.add(lotto.toString());
+        }
+        return entireLottoInfo;
     }
 
     public int getSize() {
