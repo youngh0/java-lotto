@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.EntireLotto;
+import lotto.domain.LottoResult;
 import lotto.domain.WinningNumbers;
 import lotto.dto.PurchaseAmountDTO;
 import lotto.utils.LottoGenerator;
@@ -20,5 +21,8 @@ public class LottoController {
         WinningNumbers winningNumbers = new WinningNumbers(
                 inputView.inputWinningNumber(),
                 Integer.parseInt(inputView.inputBonusNumber()));
+        LottoResult lottoResult = entireLotto.calculateTotalRanking(winningNumbers, new LottoResult());
+        outputView.showRankingResult(lottoResult);
+
     }
 }

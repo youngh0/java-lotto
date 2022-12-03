@@ -10,4 +10,14 @@ public class LottoResult {
     public void applyLottoRanking(Ranking ranking) {
         lottoResult.put(ranking, lottoResult.getOrDefault(ranking, 0) + 1);
     }
+
+    public void showTotal() {
+        for (Ranking ranking : lottoResult.keySet()) {
+            System.out.println(ranking.toString());
+        }
+    }
+
+    public int getWinningRankingCount(Ranking ranking) {
+        return lottoResult.getOrDefault(ranking, 0);
+    }
 }
