@@ -32,6 +32,10 @@ public enum Ranking {
         return String.format(message, count);
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public static Ranking findRanking(int correctNumberCount, boolean isBonusMatching) {
         if (correctNumberCount == 5) {
             return Stream.of(values())
